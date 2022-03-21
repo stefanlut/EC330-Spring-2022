@@ -1,42 +1,26 @@
+#include <cmath>
+#include <algorithm>
 #include <cstdlib>
-struct Node
-{
+class Node{
+    public:
     int data;
     Node* left;
     Node* right;
+    int height;
+    
+    Node(int data):data(data){}
 };
 
-void insert(Node* root, int data)
+Node* insert( Node* n, int data)
 {
-    if(data < root->data)
-    {
-        if(root->left == nullptr)
-        {
-            Node* newNode = new Node;
-            newNode->data = data;
-        }
-    }
-    else
-    {
-        if(root->right == nullptr)
-        {
-            Node* newNode = new Node;
-            newNode->data = data;
-        }
-    }
-    
-    
-    return;
-}
+    if(n == nullptr) return new Node(data);
 
-int main()
-{
-    Node* root = new Node;
-    root->data = rand();
-    int r;
-    for(int i = 0; i < 100; i++)
+    if(n->data > data)
     {
-        r = rand();
-
+        n->left = insert(n->left,data);
     }
+    else{
+        n->right = insert(n->right,data);
+    }
+    n->height = max(n->left->height,n->right->height) + 1;
 }
