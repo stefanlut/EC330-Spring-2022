@@ -88,10 +88,10 @@ void BloomFilter::add_hash_funs() {
     // Here's an example where I add two hash functions.
     // You will need to add at least one hash function.
     
-    this->hash_funs.push_back(new GoodHashFun_0());
-    this->hash_funs.push_back(new GoodHashFun_1());
-    this->hash_funs.push_back(new GoodHashFun_2());
-    this->hash_funs.push_back(new GoodHashFun_3());
+    //this->hash_funs.push_back(new GoodHashFun_0());
+    //this->hash_funs.push_back(new GoodHashFun_1());
+    this->hash_funs.push_back(new GoodHashFun_2()); // Best performance so far
+    //this->hash_funs.push_back(new GoodHashFun_3()); 
     
     // GoodHashFun_0 *h1 = new GoodHashFun_0();
     // GoodHashFun_1 *h2 = new GoodHashFun_1();
@@ -130,7 +130,7 @@ bool BloomFilter::member(const std::string& key) {
     // your code here ...
     for(int i = 0; i < hash_funs.size(); i++)
     {
-        if( (this->filter)[this->call_hash(i,key) % 330] == 1 ) check = true;
+        if( (this->filter)[this->call_hash(i,key) % 330] == 1 ) return true;
     }
     //
     
