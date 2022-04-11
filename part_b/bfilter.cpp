@@ -70,13 +70,12 @@ class GoodHashFun_2 : public HashFun{
 class GoodHashFun_3 : public HashFun{
     unsigned int operator()(const std::string& key)
     {
-        unsigned int hash = 0xAAAAAAAA;
+        unsigned int hash = 5381;
         unsigned int i    = 0;
 
         for (i = 0; i < key.length();  ++i)
         {
-            hash ^= ((i & 1) == 0) ? (  (hash <<  7) ^ key[i] * (hash >> 3)) :
-                               (~((hash << 11) + (key[i] ^ (hash >> 5))));
+            hash = ((hash << 5) + hash) + key[i];
         }
         return hash;
     }
@@ -92,7 +91,6 @@ void BloomFilter::add_hash_funs() {
     //this->hash_funs.push_back(new GoodHashFun_1());
     this->hash_funs.push_back(new GoodHashFun_2()); // Best performance so far
     //this->hash_funs.push_back(new GoodHashFun_3()); 
-    
     // GoodHashFun_0 *h1 = new GoodHashFun_0();
     // GoodHashFun_1 *h2 = new GoodHashFun_1();
     // GoodHashFun_2 *h3 = new GoodHashFun_2();
