@@ -35,12 +35,12 @@ std::vector<int> start(river const&r, int t) {
 	{
 		for(auto iter = visited.begin(); iter != visited.end(); iter++)
 		{
-			if(iter->first == i || iter->second) continue;
-			else
+			if(iter->first == i ) break;
+			if(iter == visited.end()-1)
 			{
 				start_points.push_back(i);
-				break;
-			} 
+			}
+			
 		
 		}
 	}
