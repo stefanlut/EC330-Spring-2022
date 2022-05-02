@@ -35,7 +35,7 @@ std::vector<int> start(river const&r, int t) {
 	{
 		for(auto iter = visited.begin(); iter != visited.end(); iter++)
 		{
-			if(iter->first == i) continue;
+			if(iter->first == i || iter->second) continue;
 			else
 			{
 				start_points.push_back(i);
