@@ -6,7 +6,7 @@ using std::sort;
 void dfs(river const&r, int start,const int& end, std::vector<std::pair<int,bool>>& visited)
 {
 
-	for(int i = 0; i < end; i++)
+	for(int i = 0; i < end + 1; i++)
 	{
 		if(r[start][i] == 1 && (!visited[i].second))
 		{
