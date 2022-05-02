@@ -6,8 +6,14 @@
 std::vector<int> start(river const&r, int t) {
 
 	// your implementation here
-
-	return {}; // don't forget to change this
+	std::vector<int> start_points = {};
+	for(int i = 0; i < t; i++)
+	{
+		start_points.push_back(i);
+		
+	}
+	std::sort(start_points);
+	return start_points; // don't forget to change this
 }
 
 // part (b)
