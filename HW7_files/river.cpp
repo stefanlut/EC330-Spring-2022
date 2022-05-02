@@ -3,7 +3,7 @@
 // add your includes here
 using std::sort;
 // part (a)
-void dfs(river const&r, int start,int end, std::vector<std::pair<int,bool>>& visited)
+void dfs(river const&r, int start,const int& end, std::vector<std::pair<int,bool>>& visited)
 {
 
 	for(int i = 0; i < end; i++)
@@ -21,7 +21,11 @@ std::vector<int> start(river const&r, int t) {
 	std::vector<int> start_points = {};
 	std::vector<std::pair<int,bool>> visited;
 	visited.push_back(std::pair<int,bool>(0,0));
-	dfs(r,0,t,visited);
+	for(int i = 0; i < t; i++)
+	{
+		dfs(r,i,t,visited);
+	}
+	
 	for(auto iter = visited.begin(); iter != visited.end(); iter++)
 	{
 		if(!iter->second) start_points.push_back(iter->first);
