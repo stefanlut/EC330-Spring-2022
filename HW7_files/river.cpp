@@ -29,6 +29,20 @@ std::vector<int> start(river const&r, int t) {
 	for(auto iter = visited.begin(); iter != visited.end(); iter++)
 	{
 		if(!iter->second) start_points.push_back(iter->first);
+		
+	}
+	for(int i = 1; i < t; i++)
+	{
+		for(auto iter = visited.begin(); iter != visited.end(); iter++)
+		{
+			if(iter->first == i) continue;
+			else
+			{
+				start_points.push_back(i);
+				break;
+			} 
+		
+		}
 	}
 	sort(start_points.begin(),start_points.end());
 	return start_points; // don't forget to change this
